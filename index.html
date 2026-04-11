@@ -9,17 +9,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream: #FAF7F2;
+      --beige: #EAEED3;
       --ink: #1A1A18;
-      --gold: #C8913A;
-      --gold-light: #F5E6CC;
-      --muted: #6B6860;
-      --border: #E2DDD4;
+      --lavender: #87677B;
+      --pink: #FFCAD4;
+      --emerald: #006B54;
+      --celadon: #BBDBB4;
     }
 
     body {
       font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
+      background: var(--beige);
       color: var(--ink);
       line-height: 1.7;
     }
@@ -30,8 +30,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.25rem 2.5rem;
-      border-bottom: 1px solid var(--border);
-      background: var(--cream);
+      border-bottom: 1px solid var(--emerald);
+      background: var(--emerald);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -49,14 +49,14 @@
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
       text-decoration: none;
-      color: var(--muted);
+      color: var(--emerald);
       font-size: 0.9rem;
       font-weight: 500;
       letter-spacing: 0.02em;
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--ink); }
-    .nav-links a.active { color: var(--gold); }
+    .nav-links a.active { color: var(--lavender); }
 
     /* HERO */
     .hero {
@@ -70,10 +70,10 @@
       font-size: 0.75rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--lavender);
       font-weight: 500;
       margin-bottom: 1.5rem;
-      border: 1px solid var(--gold);
+      border: 1px solid var(--lavender);
       padding: 0.3rem 0.8rem;
       border-radius: 2rem;
     }
@@ -89,12 +89,12 @@
 
     .hero h1 em {
       font-style: italic;
-      color: var(--gold);
+      color: var(--lavender);
     }
 
     .hero p {
       font-size: 1.15rem;
-      color: var(--muted);
+      color: var(--emerald);
       max-width: 520px;
       margin-bottom: 2.5rem;
       font-weight: 300;
@@ -103,7 +103,7 @@
     .btn {
       display: inline-block;
       background: var(--ink);
-      color: var(--cream);
+      color: var(--beige);
       text-decoration: none;
       padding: 0.85rem 2rem;
       font-size: 0.9rem;
@@ -112,15 +112,15 @@
       border-radius: 3px;
       transition: background 0.2s, transform 0.15s;
     }
-    .btn:hover { background: var(--gold); transform: translateY(-1px); }
+    .btn:hover { background: var(--lavender); transform: translateY(-1px); }
 
     .btn-outline {
       background: transparent;
       color: var(--ink);
-      border: 1px solid var(--border);
+      border: 1px solid var(--celadon);
       margin-left: 1rem;
     }
-    .btn-outline:hover { background: var(--gold-light); color: var(--ink); }
+    .btn-outline:hover { background: var(--pink); color: var(--ink); }
 
     /* STATS */
     .stats {
@@ -129,21 +129,21 @@
       padding: 3rem 2.5rem;
       max-width: 900px;
       margin: 0 auto;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      border-top: 1px solid var(--emerald);
+      border-bottom: 1px solid var(--emerald);
     }
 
     .stat-number {
       font-family: 'Playfair Display', serif;
       font-size: 2.5rem;
       font-weight: 700;
-      color: var(--gold);
+      color: var(--lavender);
       line-height: 1;
     }
 
     .stat-label {
       font-size: 0.85rem;
-      color: var(--muted);
+      color: var(--celadon);
       margin-top: 0.25rem;
     }
 
@@ -167,16 +167,16 @@
     }
 
     .mission p {
-      color: var(--muted);
+      color: var(--celadon);
       font-weight: 300;
       margin-bottom: 1rem;
     }
 
     .mission-visual {
-      background: var(--gold-light);
+      background: var(--pink);
       border-radius: 4px;
       padding: 3rem 2rem;
-      border-left: 4px solid var(--gold);
+      border-left: 4px solid var(--lavender);
     }
 
     .mission-visual blockquote {
@@ -191,14 +191,14 @@
       display: block;
       margin-top: 1rem;
       font-size: 0.85rem;
-      color: var(--muted);
+      color: var(--celadon);
       font-style: normal;
     }
 
     /* LATEST LESSONS */
     .lessons-preview {
       background: var(--ink);
-      color: var(--cream);
+      color: var(--beige);
       padding: 5rem 2.5rem;
     }
 
@@ -211,7 +211,7 @@
       font-size: 0.75rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--lavender);
       font-weight: 500;
       margin-bottom: 0.5rem;
     }
@@ -239,7 +239,7 @@
     }
 
     .lesson-card:hover {
-      border-color: var(--gold);
+      border-color: var(--lavender);
       transform: translateY(-3px);
     }
 
@@ -247,7 +247,7 @@
       font-size: 0.75rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--lavender);
       margin-bottom: 0.75rem;
     }
 
@@ -266,12 +266,12 @@
     .view-all-link {
       display: inline-block;
       margin-top: 2.5rem;
-      color: var(--gold);
+      color: var(--lavender);
       text-decoration: none;
       font-size: 0.9rem;
       font-weight: 500;
       letter-spacing: 0.04em;
-      border-bottom: 1px solid var(--gold);
+      border-bottom: 1px solid var(--lavender);
       padding-bottom: 2px;
       transition: opacity 0.2s;
     }
@@ -280,12 +280,12 @@
     /* FOOTER */
     footer {
       padding: 2.5rem;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--emerald);
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.85rem;
-      color: var(--muted);
+      color: var(--emerald);
     }
 
     @media (max-width: 650px) {
