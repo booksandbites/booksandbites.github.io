@@ -7,18 +7,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --cream: #FAF7F2; --ink: #1A1A18; --gold: #C8913A; --gold-light: #F5E6CC; --muted: #6B6860; --border: #E2DDD4; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.7; }
+    :root {
+      --beige: #FAF7F2;
+      --ink: #1A1A18;
+      --lavender: #87677B;
+      --pink: #FFCAD4;
+      --emerald: #003800;
+      --celadon: #BBDBB4;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--beige); color: var(--ink); line-height: 1.7; }
 
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2.5rem; border-bottom: 1px solid var(--border); background: var(--cream); position: sticky; top: 0; z-index: 100; }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; text-decoration: none; color: var(--ink); }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2.5rem; border-bottom: 1px solid var(--emerald); background: var(--emerald); position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; text-decoration: none; color: var(--beige); }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--ink); }
-    .nav-links a.active { color: var(--gold); }
+    .nav-links a { text-decoration: none; color: var(--celadon); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--beige); }
+    .nav-links a.active { color: var(--beige); }
 
     .about-hero { padding: 6rem 2.5rem 4rem; max-width: 680px; margin: 0 auto; text-align: center; }
-    .section-label { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 0.5rem; }
+    .section-label { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--celadon); font-weight: 500; margin-bottom: 0.5rem; }
     .about-hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; margin-bottom: 1.25rem; line-height: 1.15; }
     .about-hero p { color: var(--muted); font-weight: 300; font-size: 1.1rem; }
 
@@ -41,7 +48,7 @@
     .contact-block a { display: inline-block; background: var(--gold); color: var(--ink); text-decoration: none; padding: 0.75rem 1.75rem; border-radius: 3px; font-weight: 500; font-size: 0.9rem; transition: opacity 0.2s; }
     .contact-block a:hover { opacity: 0.85; }
 
-    footer { padding: 2.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--muted); }
+    footer { padding: 2.5rem; border-top: 1px solid var(--emerald); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--emerald); }
 
     @media (max-width: 650px) {
       nav { padding: 1rem 1.25rem; }
