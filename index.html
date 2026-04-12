@@ -13,7 +13,7 @@
       --ink: #1A1A18;
       --lavender: #87677B;
       --pink: #FFCAD4;
-      --emerald: #006B54;
+      --emerald: #003800;
       --celadon: #BBDBB4;
     }
 
@@ -49,14 +49,14 @@
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
       text-decoration: none;
-      color: var(--emerald);
+      color: var(--celadon);
       font-size: 0.9rem;
       font-weight: 500;
       letter-spacing: 0.02em;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--ink); }
-    .nav-links a.active { color: var(--lavender); }
+    .nav-links a:hover { color: var(--beige); }
+    .nav-links a.active { color: var(--beige); }
 
     /* HERO */
     .hero {
@@ -70,10 +70,10 @@
       font-size: 0.75rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--lavender);
+      color: var(--emerald);
       font-weight: 500;
       margin-bottom: 1.5rem;
-      border: 1px solid var(--lavender);
+      border: 1px solid var(--emerald);
       padding: 0.3rem 0.8rem;
       border-radius: 2rem;
     }
@@ -89,7 +89,7 @@
 
     .hero h1 em {
       font-style: italic;
-      color: var(--lavender);
+      color: var(--pink);
     }
 
     .hero p {
@@ -112,12 +112,12 @@
       border-radius: 3px;
       transition: background 0.2s, transform 0.15s;
     }
-    .btn:hover { background: var(--lavender); transform: translateY(-1px); }
+    .btn:hover { background: var(--ink); transform: translateY(-1px); }
 
     .btn-outline {
       background: transparent;
       color: var(--ink);
-      border: 1px solid var(--celadon);
+      border: 1px solid var(--emerald);
       margin-left: 1rem;
     }
     .btn-outline:hover { background: var(--pink); color: var(--ink); }
@@ -197,7 +197,7 @@
 
     /* LATEST LESSONS */
     .lessons-preview {
-      background: var(--ink);
+      background: var(--emerald);
       color: var(--beige);
       padding: 5rem 2.5rem;
     }
@@ -211,7 +211,7 @@
       font-size: 0.75rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--lavender);
+      color: var(--celadon);
       font-weight: 500;
       margin-bottom: 0.5rem;
     }
@@ -239,7 +239,7 @@
     }
 
     .lesson-card:hover {
-      border-color: var(--lavender);
+      border-color: var(--celadon);
       transform: translateY(-3px);
     }
 
@@ -301,17 +301,17 @@
 <body>
 
   <nav>
-    <a class="nav-logo" href="index.html">Lit&period; Program</a>
+    <a class="nav-logo" href="index.html">Books & Bites</a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="lessons.html">Lessons</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="about.html">Mission</a></li>
     </ul>
   </nav>
 
   <section class="hero">
     <span class="hero-tag">Nonprofit · Literacy Education</span>
-    <h1>Words open <em>every</em> door.</h1>
+    <h1>Teaching literacy <em>bite</em> by <em>bite</em>.</h1>
     <p>We believe reading is a right, not a privilege. Our free lessons help learners at every stage build confidence and skill.</p>
     <a href="lessons.html" class="btn">Browse Lessons</a>
     <a href="about.html" class="btn btn-outline">Our Mission</a>
