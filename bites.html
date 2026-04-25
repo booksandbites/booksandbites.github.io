@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bites — Books &amp; Bites</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --beige: #FAF7F2;
+      --ink: #1A1A18;
+      --lavender: #87677B;
+      --pink: #FFCAD4;
+      --emerald: #003800;
+      --celadon: #BBDBB4;
+      --muted: #5A5A52;
+      --border: #E2DDD6;
+      --gold: #87677B;
+      --gold-light: #F5EEF0;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--beige); color: var(--ink); line-height: 1.7; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2.5rem; border-bottom: 1px solid var(--emerald); background: var(--emerald); position: sticky; top: 0; z-index: 100; }
+    .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+    .nav-logo img { width: 36px; height: 36px; object-fit: contain; border-radius: 50%; }
+    .nav-logo span { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--beige); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--celadon); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--beige); }
+    .nav-links a.active { color: var(--beige); }
+
+    /* HERO */
+    .page-hero { background: var(--pink); padding: 5.5rem 2.5rem 4.5rem; border-bottom: 3px solid var(--lavender); position: relative; overflow: hidden; }
+    .page-hero::after { content: '🍽️'; position: absolute; right: 8%; top: 50%; transform: translateY(-50%); font-size: 8rem; opacity: 0.15; pointer-events: none; }
+    .page-hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .section-label { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; margin-bottom: 0.6rem; }
+    .page-hero .section-label { color: var(--lavender); }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.4rem); font-weight: 700; margin-bottom: 0.9rem; line-height: 1.1; color: var(--ink); }
+    .page-hero p { color: var(--muted); font-weight: 300; font-size: 1.05rem; max-width: 500px; }
+
+    /* IMPACT BAR */
+    .impact-bar { background: var(--ink); }
+    .impact-inner { max-width: 900px; margin: 0 auto; padding: 2.5rem; display: grid; grid-template-columns: repeat(3, 1fr); }
+    .impact-stat { text-align: center; padding: 1rem; border-right: 1px solid rgba(255,255,255,0.08); }
+    .impact-stat:last-child { border-right: none; }
+    .impact-num { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 700; color: var(--celadon); line-height: 1; }
+    .impact-label { font-size: 0.82rem; color: rgba(250,247,242,0.55); margin-top: 0.4rem; font-weight: 300; }
+
+    /* MISSION */
+    .mission-wrap { max-width: 900px; margin: 0 auto; padding: 4rem 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .mission-wrap h2 { font-family: 'Playfair Display', serif; font-size: 1.9rem; margin-bottom: 0.9rem; line-height: 1.2; }
+    .mission-wrap p { color: var(--muted); font-weight: 300; margin-bottom: 0.75rem; font-size: 0.95rem; }
+    .how-box { background: var(--gold-light); border-left: 4px solid var(--lavender); border-radius: 0 4px 4px 0; padding: 2rem; }
+    .how-box h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 0.9rem; }
+    .how-list { list-style: none; }
+    .how-list li { display: flex; gap: 0.75rem; padding: 0.55rem 0; border-bottom: 1px solid var(--border); font-size: 0.875rem; color: var(--muted); font-weight: 300; }
+    .how-list li:last-child { border-bottom: none; }
+    .how-list li::before { content: '→'; color: var(--lavender); font-weight: 500; flex-shrink: 0; }
+
+    /* SHELTERS */
+    .shelters-section { background: var(--emerald); color: var(--beige); padding: 5rem 2.5rem; }
+    .shelters-inner { max-width: 900px; margin: 0 auto; }
+    .shelters-inner .section-label { color: var(--celadon); }
+    .shelters-inner h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.4rem; }
+    .shelters-inner > p { color: rgba(250,247,242,0.6); font-weight: 300; margin-bottom: 2.5rem; }
+    .shelters-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; }
+    .shelter-card { border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 1.6rem; transition: border-color 0.2s, transform 0.2s; }
+    .shelter-card:hover { border-color: var(--celadon); transform: translateY(-2px); }
+    .shelter-icon { font-size: 1.6rem; margin-bottom: 0.65rem; }
+    .shelter-card h3 { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 0.3rem; line-height: 1.3; }
+    .shelter-card p { font-size: 0.82rem; color: rgba(250,247,242,0.55); font-weight: 300; margin-bottom: 0.75rem; }
+    .shelter-stat { font-size: 0.76rem; color: var(--celadon); font-weight: 500; letter-spacing: 0.03em; }
+
+    /* CAROUSEL */
+    .carousel-section { padding: 5rem 2.5rem; }
+    .carousel-inner { max-width: 900px; margin: 0 auto; }
+    .carousel-inner .section-label { color: var(--muted); }
+    .carousel-inner h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.4rem; }
+    .carousel-inner > p { color: var(--muted); font-weight: 300; margin-bottom: 2.5rem; }
+
+    .carousel-viewport { overflow: hidden; border-radius: 4px; }
+    .carousel-track { display: flex; gap: 1.5rem; transition: transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+    .restaurant-card {
+      flex: 0 0 calc(33.333% - 1rem);
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem 1.75rem;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .restaurant-card:hover { border-color: var(--lavender); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+    .restaurant-logo { width: 52px; height: 52px; border-radius: 50%; background: var(--gold-light); border: 2px solid var(--lavender); display: flex; align-items: center; justify-content: center; font-size: 1.35rem; margin-bottom: 1rem; }
+    .restaurant-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.3rem; }
+    .restaurant-card p { font-size: 0.85rem; color: var(--muted); font-weight: 300; flex: 1; margin-bottom: 1rem; }
+    .r-tag { display: inline-block; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 2rem; background: var(--gold-light); color: var(--lavender); font-weight: 500; }
+
+    .carousel-controls { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.75rem; }
+    .c-btn { width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--border); background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--ink); transition: border-color 0.2s, background 0.2s, color 0.2s; }
+    .c-btn:hover:not(:disabled) { border-color: var(--lavender); background: var(--lavender); color: white; }
+    .c-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .c-dots { display: flex; gap: 0.4rem; margin-left: 0.4rem; }
+    .c-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); cursor: pointer; border: none; transition: background 0.2s; padding: 0; }
+    .c-dot.active { background: var(--lavender); }
+
+    /* CONTACT */
+    .contact-wrap { padding: 0 2.5rem 4rem; max-width: 900px; margin: 0 auto; }
+    .contact-card { background: var(--ink); color: var(--beige); padding: 3rem; border-radius: 4px; text-align: center; }
+    .contact-card h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .contact-card p { color: rgba(250,247,242,0.65); margin-bottom: 1.5rem; font-weight: 300; }
+    .contact-card a { display: inline-block; background: var(--lavender); color: var(--beige); text-decoration: none; padding: 0.75rem 1.75rem; border-radius: 3px; font-weight: 500; font-size: 0.9rem; transition: background 0.2s; }
+    .contact-card a:hover { background: var(--celadon); color: var(--ink); }
+
+    footer { padding: 2.5rem; border-top: 1px solid var(--emerald); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--emerald); }
+
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { gap: 1rem; }
+      .page-hero::after { display: none; }
+      .impact-inner { grid-template-columns: 1fr 1fr; }
+      .mission-wrap { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.25rem; }
+      .shelters-section, .carousel-section, .contact-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .restaurant-card { flex: 0 0 85%; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="np_logo.png" alt="Books &amp; Bites logo" />
+      <span>Books &amp; Bites</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="bites.html" class="active">Bites</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="section-label">Food Donations Initiative</p>
+      <h1>🍎 Bites</h1>
+      <p>Nourishing our community one meal at a time. We partner with local restaurants to redirect surplus food to shelters across the region — because learning is harder on an empty stomach.</p>
+    </div>
+  </div>
+
+  <!-- IMPACT NUMBERS -->
+  <div class="impact-bar">
+    <div class="impact-inner">
+      <div class="impact-stat">
+        <div class="impact-num">4,200+</div>
+        <div class="impact-label">Meals donated this year</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-num">8</div>
+        <div class="impact-label">Shelters benefitted</div>
+      </div>
+      <div class="impact-stat">
+        <div class="impact-num">3</div>
+        <div class="impact-label">Restaurant partners</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION -->
+  <div class="mission-wrap">
+    <div>
+      <p class="section-label" style="color:var(--muted)">Our approach</p>
+      <h2>Food is part of the foundation.</h2>
+      <p>The Bites initiative connects our literacy work with community care. We coordinate surplus meal pickups from restaurant partners and deliver them to local shelters on a weekly basis — free to both sides.</p>
+      <p>Every meal we deliver is one less thing standing between a person and their potential.</p>
+    </div>
+    <div class="how-box">
+      <h3>How it works</h3>
+      <ul class="how-list">
+        <li>Restaurants donate surplus food at the end of service</li>
+        <li>Our volunteers coordinate same-day pickup</li>
+        <li>Meals are delivered to partner shelters within hours</li>
+        <li>Shelters log recipients so we can track our impact</li>
+        <li>We report outcomes back to partners monthly</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SHELTERS -->
+  <div class="shelters-section">
+    <div class="shelters-inner">
+      <p class="section-label">Community impact</p>
+      <h2>Shelters we've benefitted</h2>
+      <p>These organizations trust us to show up every week. We're proud to serve alongside them.</p>
+      <div class="shelters-grid">
+        <div class="shelter-card">
+          <div class="shelter-icon">🏠</div>
+          <h3>Haven House Family Shelter</h3>
+          <p>Emergency housing and support services for families in crisis.</p>
+          <div class="shelter-stat">↗ 620 meals delivered</div>
+        </div>
+        <div class="shelter-card">
+          <div class="shelter-icon">🌙</div>
+          <h3>Nightwatch Men's Shelter</h3>
+          <p>Overnight shelter and transitional housing for adult men.</p>
+          <div class="shelter-stat">↗ 870 meals delivered</div>
+        </div>
+        <div class="shelter-card">
+          <div class="shelter-icon">🌸</div>
+          <h3>Rose Path Women's Center</h3>
+          <p>Safe housing and resources for women and children fleeing domestic violence.</p>
+          <div class="shelter-stat">↗ 540 meals delivered</div>
+        </div>
+        <div class="shelter-card">
+          <div class="shelter-icon">🧒</div>
+          <h3>Bright Futures Youth Shelter</h3>
+          <p>Short-term care and support for at-risk youth ages 12–21.</p>
+          <div class="shelter-stat">↗ 410 meals delivered</div>
+        </div>
+        <div class="shelter-card">
+          <div class="shelter-icon">🤝</div>
+          <h3>Community Care Coalition</h3>
+          <p>A network of neighborhood pantries across five zip codes.</p>
+          <div class="shelter-stat">↗ 780 meals delivered</div>
+        </div>
+        <div class="shelter-card">
+          <div class="shelter-icon">🕊️</div>
+          <h3>New Horizons Transitional</h3>
+          <p>Long-term housing helping individuals move from shelter to stability.</p>
+          <div class="shelter-stat">↗ 390 meals delivered</div>
+        </div>
+        <div class="shelter-card">
+          <div class="shelter-icon">🏥</div>
+          <h3>Riverside Recovery House</h3>
+          <p>Sober living and recovery support for adults in treatment.</p>
+          <div class="shelter-stat">↗ 310 meals delivered</div>
+        </div>
+        <div class="shelter-card">
+          <div class="shelter-icon">👴</div>
+          <h3>Elder First Senior Center</h3>
+          <p>Meals and community programs for low-income seniors.</p>
+          <div class="shelter-stat">↗ 280 meals delivered</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESTAURANT CAROUSEL -->
+  <div class="carousel-section">
+    <div class="carousel-inner">
+      <p class="section-label">Our sponsors</p>
+      <h2>Restaurant partners</h2>
+      <p>These generous establishments donate surplus meals every week. We're grateful for every plate.</p>
+
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="carousel-track">
+          <div class="restaurant-card">
+            <div>
+              <div class="restaurant-logo">🍕</div>
+              <h3>Placeholder Restaurant One</h3>
+              <p>A beloved neighborhood spot known for hearty portions and a big heart. Donating weekly since our founding.</p>
+            </div>
+            <span class="r-tag">Founding Partner</span>
+          </div>
+          <div class="restaurant-card">
+            <div>
+              <div class="restaurant-logo">🥗</div>
+              <h3>Placeholder Restaurant Two</h3>
+              <p>Fresh, seasonal cuisine with a commitment to zero food waste. Their surplus feeds dozens every week.</p>
+            </div>
+            <span class="r-tag">Weekly Donor</span>
+          </div>
+          <div class="restaurant-card">
+            <div>
+              <div class="restaurant-logo">🍜</div>
+              <h3>Placeholder Restaurant Three</h3>
+              <p>Family-run comfort food with deep community roots. A cornerstone partner of the Bites initiative.</p>
+            </div>
+            <span class="r-tag">Community Partner</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-controls">
+        <button class="c-btn" id="prev-btn" aria-label="Previous" disabled>←</button>
+        <button class="c-btn" id="next-btn" aria-label="Next">→</button>
+        <div class="c-dots" id="c-dots"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-wrap">
+    <div class="contact-card">
+      <h2>Partner with Bites</h2>
+      <p>Are you a restaurant or food business that wants to help? We'd love to connect.</p>
+      <a href="mailto:hello@booksandbites.org">Get in touch →</a>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2025 Books &amp; Bites. 501(c)(3) Nonprofit organization.</span>
+    <span>Book by book &amp; bite by bite 🤍</span>
+  </footer>
+
+  <script>
+    const track = document.getElementById('carousel-track');
+    const cards = Array.from(track.querySelectorAll('.restaurant-card'));
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const dotsEl = document.getElementById('c-dots');
+    let current = 0;
+
+    function getVisible() {
+      const w = track.parentElement.offsetWidth;
+      return w < 480 ? 1 : w < 700 ? 2 : 3;
+    }
+
+    function maxIndex() {
+      return Math.max(0, cards.length - getVisible());
+    }
+
+    // Build dots
+    cards.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'c-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', `Slide ${i + 1}`);
+      d.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(d);
+    });
+
+    function goTo(idx) {
+      current = Math.min(Math.max(idx, 0), maxIndex());
+      const cardW = cards[0].getBoundingClientRect().width;
+      const gap = 24;
+      track.style.transform = `translateX(-${current * (cardW + gap)}px)`;
+      dotsEl.querySelectorAll('.c-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current >= maxIndex();
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    goTo(0);
+    window.addEventListener('resize', () => goTo(current));
+  </script>
+
+</body>
+</html>

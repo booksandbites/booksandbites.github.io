@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Books — Books &amp; Bites</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --beige: #FAF7F2;
+      --ink: #1A1A18;
+      --lavender: #87677B;
+      --pink: #FFCAD4;
+      --emerald: #003800;
+      --celadon: #BBDBB4;
+      --muted: #5A5A52;
+      --border: #E2DDD6;
+      --gold: #87677B;
+      --gold-light: #F5EEF0;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--beige); color: var(--ink); line-height: 1.7; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2.5rem; border-bottom: 1px solid var(--emerald); background: var(--emerald); position: sticky; top: 0; z-index: 100; }
+    .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+    .nav-logo img { width: 36px; height: 36px; object-fit: contain; border-radius: 50%; }
+    .nav-logo span { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--beige); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--celadon); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--beige); }
+    .nav-links a.active { color: var(--beige); }
+
+    /* HERO */
+    .page-hero { background: var(--emerald); color: var(--beige); padding: 5.5rem 2.5rem 4.5rem; position: relative; overflow: hidden; }
+    .page-hero::after { content: '📖'; position: absolute; right: 8%; top: 50%; transform: translateY(-50%); font-size: 8rem; opacity: 0.12; pointer-events: none; }
+    .page-hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .section-label { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; margin-bottom: 0.6rem; }
+    .page-hero .section-label { color: var(--celadon); }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.4rem); font-weight: 700; margin-bottom: 0.9rem; line-height: 1.1; }
+    .page-hero p { color: rgba(250,247,242,0.72); font-weight: 300; font-size: 1.05rem; max-width: 500px; }
+
+    /* WHAT / WHO */
+    .intro-grid { max-width: 900px; margin: 0 auto; padding: 4rem 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .intro-grid h2 { font-family: 'Playfair Display', serif; font-size: 1.9rem; margin-bottom: 0.9rem; line-height: 1.2; }
+    .intro-grid p { color: var(--muted); font-weight: 300; margin-bottom: 0.75rem; font-size: 0.95rem; }
+
+    /* LEVELS */
+    .levels-section { background: var(--gold-light); padding: 4.5rem 2.5rem; }
+    .levels-inner { max-width: 900px; margin: 0 auto; }
+    .levels-inner .section-label { color: var(--muted); }
+    .levels-inner h2 { font-family: 'Playfair Display', serif; font-size: 1.9rem; margin-bottom: 0.4rem; }
+    .levels-inner > p { color: var(--muted); font-weight: 300; margin-bottom: 2rem; }
+    .levels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .level-card { background: white; border: 1px solid var(--border); border-radius: 4px; padding: 1.75rem; }
+    .level-icon { font-size: 1.6rem; margin-bottom: 0.65rem; }
+    .l-tag { display: inline-block; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 2rem; margin-bottom: 0.65rem; }
+    .tag-beg { background: #E8F5E9; color: #2E7D32; }
+    .tag-int { background: #FFF8E1; color: #F57F17; }
+    .tag-adv { background: #E8EAF6; color: #283593; }
+    .level-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; margin-bottom: 0.35rem; }
+    .level-card p { font-size: 0.855rem; color: var(--muted); font-weight: 300; }
+
+    /* READING LIST */
+    .reading-list { max-width: 900px; margin: 0 auto; padding: 4.5rem 2.5rem; }
+    .reading-list .section-label { color: var(--muted); }
+    .reading-list h2 { font-family: 'Playfair Display', serif; font-size: 1.9rem; margin-bottom: 0.4rem; }
+    .reading-list > p { color: var(--muted); font-weight: 300; margin-bottom: 2rem; }
+    .book-row { display: flex; align-items: flex-start; gap: 1.25rem; padding: 1.1rem 0; border-bottom: 1px solid var(--border); }
+    .book-row:last-child { border-bottom: none; }
+    .book-num { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--border); font-weight: 700; min-width: 2rem; padding-top: 0.1rem; }
+    .book-info h3 { font-weight: 500; font-size: 0.95rem; margin-bottom: 0.15rem; }
+    .book-info p { font-size: 0.85rem; color: var(--muted); font-weight: 300; }
+    .book-level { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lavender); font-weight: 500; margin-bottom: 0.2rem; }
+
+    /* LESSONS SECTION */
+    .lessons-section { background: var(--ink); color: var(--beige); padding: 5rem 2.5rem; }
+    .lessons-inner { max-width: 900px; margin: 0 auto; }
+    .lessons-inner .section-label { color: var(--celadon); }
+    .lessons-inner h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.4rem; }
+    .lessons-inner > p { color: rgba(250,247,242,0.6); font-weight: 300; margin-bottom: 2rem; }
+
+    /* LESSON FILTERS */
+    .lesson-filters { display: flex; gap: 0.65rem; flex-wrap: wrap; align-items: center; margin-bottom: 1.25rem; }
+    .filter-label { font-size: 0.82rem; color: rgba(250,247,242,0.45); margin-right: 0.2rem; }
+    .filter-btn { background: transparent; border: 1px solid rgba(255,255,255,0.15); padding: 0.35rem 0.9rem; border-radius: 2rem; font-size: 0.82rem; cursor: pointer; font-family: 'DM Sans', sans-serif; color: rgba(250,247,242,0.55); transition: all 0.2s; }
+    .filter-btn:hover, .filter-btn.active { background: var(--celadon); color: var(--ink); border-color: var(--celadon); }
+
+    /* LESSON SEARCH */
+    .lesson-search { margin-bottom: 2rem; }
+    .lesson-search input { padding: 0.65rem 1rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 3px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; background: rgba(255,255,255,0.07); color: var(--beige); outline: none; width: 100%; max-width: 380px; }
+    .lesson-search input::placeholder { color: rgba(250,247,242,0.35); }
+    .lesson-search input:focus { border-color: var(--celadon); }
+
+    /* LESSON GRID */
+    .lessons-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+    .lesson-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 1.6rem; display: flex; flex-direction: column; transition: border-color 0.2s, transform 0.2s; }
+    .lesson-card:hover { border-color: var(--celadon); transform: translateY(-2px); }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.9rem; }
+    .level-badge { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; padding: 0.2rem 0.6rem; border-radius: 2rem; }
+    .level-beginner { background: #E8F5E9; color: #2E7D32; }
+    .level-intermediate { background: #FFF8E1; color: #F57F17; }
+    .level-advanced { background: #E8EAF6; color: #283593; }
+    .lesson-month { font-size: 0.72rem; color: rgba(250,247,242,0.35); }
+    .lesson-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; margin-bottom: 0.4rem; line-height: 1.3; }
+    .lesson-card p { font-size: 0.845rem; color: rgba(250,247,242,0.55); font-weight: 300; flex: 1; }
+    .card-footer { margin-top: 1.1rem; padding-top: 0.9rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; }
+    .card-duration { font-size: 0.78rem; color: rgba(250,247,242,0.4); }
+    .card-link { font-size: 0.78rem; color: var(--celadon); font-weight: 500; text-decoration: none; letter-spacing: 0.04em; }
+    .card-link:hover { text-decoration: underline; }
+    .no-results { grid-column: 1/-1; text-align: center; padding: 3rem; color: rgba(250,247,242,0.4); font-style: italic; }
+
+    /* CONTACT */
+    .contact-wrap { padding: 4rem 2.5rem; max-width: 900px; margin: 0 auto; }
+    .contact-card { background: var(--ink); color: var(--beige); padding: 3rem; border-radius: 4px; text-align: center; }
+    .contact-card h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .contact-card p { color: rgba(250,247,242,0.65); margin-bottom: 1.5rem; font-weight: 300; }
+    .contact-card a { display: inline-block; background: var(--lavender); color: var(--beige); text-decoration: none; padding: 0.75rem 1.75rem; border-radius: 3px; font-weight: 500; font-size: 0.9rem; transition: background 0.2s; }
+    .contact-card a:hover { background: var(--celadon); color: var(--ink); }
+
+    footer { padding: 2.5rem; border-top: 1px solid var(--emerald); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--emerald); }
+
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { gap: 1rem; }
+      .page-hero::after { display: none; }
+      .intro-grid { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.25rem; }
+      .levels-grid { grid-template-columns: 1fr; }
+      .levels-section, .reading-list, .lessons-section, .contact-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="np_logo.png" alt="Books &amp; Bites logo" />
+      <span>Books &amp; Bites</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="books.html" class="active">Books</a></li>
+      <li><a href="bites.html">Bites</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="section-label">Literacy Initiative</p>
+      <h1>📚 Books</h1>
+      <p>Curated reading lists, guided literacy lessons, and free resources for every skill level — from the very first letter to full fluency.</p>
+    </div>
+  </div>
+
+  <!-- WHAT / WHO -->
+  <div class="intro-grid">
+    <div>
+      <p class="section-label" style="color:var(--muted)">What we do</p>
+      <h2>What is the Books initiative?</h2>
+      <p>Books is our core literacy program — a structured journey through reading, from the alphabet all the way to deep comprehension. Every resource is free, judgment-free, and built with real learners in mind.</p>
+      <p>We partner with educators and community organizations to ensure our materials reach the people who need them most.</p>
+    </div>
+    <div>
+      <p class="section-label" style="color:var(--muted)">Who it's for</p>
+      <h2>Every learner is welcome.</h2>
+      <p>Books is designed for adult learners returning to education, children beginning their reading journey, and anyone who wants to strengthen their literacy foundation.</p>
+      <p>You don't need any prior knowledge — just a willingness to learn.</p>
+    </div>
+  </div>
+
+  <!-- LEVELS -->
+  <div class="levels-section">
+    <div class="levels-inner">
+      <p class="section-label">Skill levels</p>
+      <h2>Where will you start?</h2>
+      <p>Our resources are organized into three tracks so you can jump in at the right place.</p>
+      <div class="levels-grid">
+        <div class="level-card">
+          <span class="l-tag tag-beg">Beginner</span>
+          <div class="level-icon">🌱</div>
+          <h3>Just Starting Out</h3>
+          <p>Letters, sounds, and your very first words. No experience required whatsoever.</p>
+        </div>
+        <div class="level-card">
+          <span class="l-tag tag-int">Intermediate</span>
+          <div class="level-icon">📗</div>
+          <h3>Building Fluency</h3>
+          <p>Sight words, sentence structure, and reading with growing confidence and speed.</p>
+        </div>
+        <div class="level-card">
+          <span class="l-tag tag-adv">Advanced</span>
+          <div class="level-icon">🏆</div>
+          <h3>Deep Comprehension</h3>
+          <p>Strategies for understanding, analyzing, and engaging deeply with any text.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- READING LIST -->
+  <div class="reading-list">
+    <p class="section-label">Curated picks</p>
+    <h2>Recommended Reads</h2>
+    <p>Titles we love and recommend for each level of the journey.</p>
+    <div class="book-row">
+      <div class="book-num">01</div>
+      <div class="book-info">
+        <div class="book-level">Beginner</div>
+        <h3>The Cat in the Hat — Dr. Seuss</h3>
+        <p>A timeless starting point — rhythmic, playful, and perfect for new readers of any age.</p>
+      </div>
+    </div>
+    <div class="book-row">
+      <div class="book-num">02</div>
+      <div class="book-info">
+        <div class="book-level">Beginner</div>
+        <h3>Frog and Toad Are Friends — Arnold Lobel</h3>
+        <p>Gentle, warm, and wonderfully simple. A classic for building early reading confidence.</p>
+      </div>
+    </div>
+    <div class="book-row">
+      <div class="book-num">03</div>
+      <div class="book-info">
+        <div class="book-level">Intermediate</div>
+        <h3>Charlotte's Web — E.B. White</h3>
+        <p>A beautifully written story that rewards careful, thoughtful reading.</p>
+      </div>
+    </div>
+    <div class="book-row">
+      <div class="book-num">04</div>
+      <div class="book-info">
+        <div class="book-level">Advanced</div>
+        <h3>The Autobiography of Frederick Douglass</h3>
+        <p>A profound account of literacy as liberation — meaningful at every level.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSONS -->
+  <div class="lessons-section">
+    <div class="lessons-inner">
+      <p class="section-label">Lesson library</p>
+      <h2>All Lessons</h2>
+      <p>Browse our growing library. A new lesson is added every month — all free, forever.</p>
+
+      <div class="lesson-search">
+        <input type="text" id="search" placeholder="Search lessons…" />
+      </div>
+
+      <div class="lesson-filters">
+        <span class="filter-label">Filter:</span>
+        <button class="filter-btn active" data-filter="all">All levels</button>
+        <button class="filter-btn" data-filter="beginner">Beginner</button>
+        <button class="filter-btn" data-filter="intermediate">Intermediate</button>
+        <button class="filter-btn" data-filter="advanced">Advanced</button>
+      </div>
+
+      <div class="lessons-grid" id="lessons-grid"></div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-wrap">
+    <div class="contact-card">
+      <h2>Want to support Books?</h2>
+      <p>Volunteer as a reading tutor, donate books, or partner with our program.</p>
+      <a href="mailto:hello@booksandbites.org">Get in touch →</a>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2025 Books &amp; Bites. 501(c)(3) Nonprofit organization.</span>
+    <span>Book by book &amp; bite by bite 🤍</span>
+  </footer>
+
+  <script>
+    const LESSONS = [
+      { level: "beginner", month: "January 2025", title: "Alphabet Foundations", desc: "Letter recognition, phonics basics, and building your first words from scratch.", duration: "30 min" },
+      { level: "beginner", month: "February 2025", title: "Vowel Sounds", desc: "Short and long vowel sounds with practice words and simple exercises.", duration: "25 min" },
+      { level: "intermediate", month: "March 2025", title: "Sight Words & Fluency", desc: "The 100 most common words and techniques to recognize them instantly.", duration: "35 min" },
+      { level: "beginner", month: "April 2025", title: "Consonant Blends", desc: "Blending consonants together to form more complex words and sounds.", duration: "30 min" },
+      { level: "advanced", month: "May 2025", title: "Reading Comprehension", desc: "Strategies for understanding, summarizing, and engaging deeply with any text.", duration: "45 min" },
+      { level: "intermediate", month: "June 2025", title: "Sentence Building", desc: "How simple sentences are structured and how to build complexity over time.", duration: "40 min" },
+    ];
+
+    let activeFilter = "all";
+    let searchQuery = "";
+
+    function renderCards() {
+      const grid = document.getElementById("lessons-grid");
+      const filtered = LESSONS.filter(l => {
+        const matchLevel = activeFilter === "all" || l.level === activeFilter;
+        const matchSearch = l.title.toLowerCase().includes(searchQuery) || l.desc.toLowerCase().includes(searchQuery);
+        return matchLevel && matchSearch;
+      });
+      if (filtered.length === 0) {
+        grid.innerHTML = '<p class="no-results">No lessons found. Try a different search or filter.</p>';
+        return;
+      }
+      grid.innerHTML = filtered.map(l => `
+        <div class="lesson-card">
+          <div class="card-top">
+            <span class="level-badge level-${l.level}">${l.level}</span>
+            <span class="lesson-month">${l.month}</span>
+          </div>
+          <h3>${l.title}</h3>
+          <p>${l.desc}</p>
+          <div class="card-footer">
+            <span class="card-duration">${l.duration}</span>
+            <a href="#" class="card-link">Start lesson →</a>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeFilter = btn.dataset.filter;
+        renderCards();
+      });
+    });
+
+    document.getElementById("search").addEventListener("input", e => {
+      searchQuery = e.target.value.toLowerCase();
+      renderCards();
+    });
+
+    renderCards();
+  </script>
+
+</body>
+</html>
