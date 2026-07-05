@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Books & Bites — Literacy Program</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --beige: #FAF7F2; --ink: #1A1A18; --lavender: #87677B;
+      --pink: #FFCAD4; --emerald: #003800; --celadon: #BBDBB4;
+      --muted: #5A5A55; --border: #E2DDD6;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--beige); color: var(--ink); line-height: 1.7; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2.5rem; border-bottom: 1px solid var(--emerald); background: var(--emerald); position: sticky; top: 0; z-index: 100; }
+    .nav-left { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-logo-img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; text-decoration: none; color: var(--beige); }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--celadon); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--beige); }
+    .nav-links a.active { color: var(--beige); }
+
+    .btn { display: inline-block; background: var(--ink); color: var(--beige); text-decoration: none; padding: 0.8rem 1.75rem; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.04em; border-radius: 3px; transition: background 0.2s, transform 0.15s; }
+    .btn:hover { background: var(--lavender); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--lavender); margin-left: 0.75rem; }
+    .btn-outline:hover { background: var(--pink); color: var(--ink); }
+
+    /* HERO — 2 col, compact */
+    .hero { padding: 5rem 2.5rem 4rem; max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .hero-tag { display: inline-block; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--emerald); font-weight: 500; margin-bottom: 1.25rem; border: 1px solid var(--emerald); padding: 0.3rem 0.8rem; border-radius: 2rem; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.1; font-weight: 700; margin-bottom: 1.25rem; }
+    .hero h1 em { font-style: italic; color: var(--lavender); }
+    .hero-sub { font-size: 1rem; color: var(--muted); max-width: 400px; margin-bottom: 2rem; font-weight: 300; }
+
+    .logo-card { background: var(--ink); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2.5rem 2rem; gap: 0.75rem; }
+    .logo-card img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(187,219,180,0.3); }
+    .logo-card .logo-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--beige); }
+    .logo-card .logo-tagline { font-size: 0.75rem; color: var(--celadon); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* STATS */
+    .stats { display: flex; gap: 3rem; padding: 2.5rem 2.5rem; max-width: 900px; margin: 0 auto; border-top: 1px solid var(--emerald); border-bottom: 1px solid var(--emerald); }
+    .stat-number { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--ink); line-height: 1; }
+    .stat-label { font-size: 0.85rem; color: var(--emerald); margin-top: 0.25rem; }
+
+    /* PILLARS */
+    .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 900px; margin: 0 auto; padding: 3rem 2.5rem; }
+    .pillar-card { border-radius: 6px; padding: 2rem 1.75rem; text-decoration: none; color: inherit; display: block; transition: transform 0.2s, box-shadow 0.2s; }
+    .pillar-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+    .pillar-card.books { background: var(--emerald); color: var(--beige); }
+    .pillar-card.bites { background: var(--pink); }
+    .pillar-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+    .pillar-card h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.4rem; }
+    .pillar-card.books p { color: rgba(250,247,242,0.7); font-weight: 300; font-size: 0.875rem; }
+    .pillar-card.bites p { color: var(--muted); font-weight: 300; font-size: 0.875rem; }
+    .pillar-link { display: inline-block; margin-top: 1rem; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em; text-decoration: none; padding-bottom: 1px; }
+    .pillar-card.books .pillar-link { color: var(--celadon); border-bottom: 1px solid var(--celadon); }
+    .pillar-card.bites .pillar-link { color: var(--lavender); border-bottom: 1px solid var(--lavender); }
+
+    /* CONTACT */
+    .contact-section { max-width: 900px; margin: 0 auto; padding: 1rem 2.5rem 5rem; }
+    .contact-card { background: var(--ink); color: var(--beige); padding: 2.75rem 3rem; border-radius: 6px; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
+    .contact-card h2 { font-family: 'Playfair Display', serif; font-size: 1.7rem; margin-bottom: 0.4rem; }
+    .contact-card p { color: rgba(250,247,242,0.65); font-weight: 300; font-size: 0.9rem; }
+    .contact-actions { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-end; }
+    .btn-light { display: inline-block; background: var(--beige); color: var(--ink); text-decoration: none; padding: 0.7rem 1.5rem; border-radius: 3px; font-weight: 500; font-size: 0.875rem; white-space: nowrap; transition: opacity 0.2s; }
+    .btn-light:hover { opacity: 0.85; }
+    .btn-ghost { display: inline-block; background: transparent; color: var(--celadon); text-decoration: none; padding: 0.7rem 1.5rem; border-radius: 3px; border: 1px solid rgba(187,219,180,0.35); font-weight: 500; font-size: 0.875rem; white-space: nowrap; transition: border-color 0.2s; }
+    .btn-ghost:hover { border-color: var(--celadon); }
+
+    footer { padding: 2.5rem; border-top: 1px solid var(--emerald); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--emerald); }
+
+    @media (max-width: 700px) {
+      .hero, .pillars { grid-template-columns: 1fr; }
+      .hero { gap: 2rem; }
+      .stats { flex-wrap: wrap; gap: 1.5rem; }
+      .contact-card { grid-template-columns: 1fr; }
+      .contact-actions { align-items: flex-start; }
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { gap: 1rem; font-size: 0.8rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-left">
+      <img class="nav-logo-img" src="np_logo.png" alt="Books & Bites logo" />
+      <a class="nav-logo" href="index.html">Books &amp; Bites</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="bites.html">Bites</a></li>
+      <li><a href="about.html">Mission</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <span class="hero-tag">Nonprofit · Literacy Education</span>
+      <h1>Teaching literacy <em>bite</em> by <em>bite</em>.</h1>
+      <p class="hero-sub">We believe reading is a right, not a privilege. Our free lessons help learners at every stage build confidence and skill.</p>
+      <a href="lessons.html" class="btn">Browse Lessons</a>
+      <a href="about.html" class="btn btn-outline">Our Mission</a>
+    </div>
+    <div class="logo-card">
+      <img src="np_logo.png" alt="Books & Bites seal" />
+      <span class="logo-name">Books &amp; Bites</span>
+      <span class="logo-tagline">Book by book · Bite by bite</span>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div>
+      <div class="stat-number">Free</div>
+      <div class="stat-label">Always, for everyone</div>
+    </div>
+    <div>
+      <div class="stat-number">New</div>
+      <div class="stat-label">Lesson every month</div>
+    </div>
+    <div>
+      <div class="stat-number">All</div>
+      <div class="stat-label">Skill levels welcome</div>
+    </div>
+  </div>
+
+  <div class="pillars">
+    <a class="pillar-card books" href="books.html">
+      <div class="pillar-icon">📚</div>
+      <h2>Books</h2>
+      <p>Our curated reading library — free books, guided reading programs, and resources for every level.</p>
+      <span class="pillar-link">Explore Books →</span>
+    </a>
+    <a class="pillar-card bites" href="bites.html">
+      <div class="pillar-icon">🍎</div>
+      <h2>Bites</h2>
+      <p>Short, digestible learning moments — snack-sized lessons, activities, and tips you can use today.</p>
+      <span class="pillar-link">Explore Bites →</span>
+    </a>
+  </div>
+
+  <div class="contact-section">
+    <div class="contact-card">
+      <div>
+        <h2>Get involved</h2>
+        <p>Want to volunteer, donate, or partner with us? We'd love to hear from you — every hand helps.</p>
+      </div>
+      <div class="contact-actions">
+        <a href="mailto:hello@booksandbites.org" class="btn-light">Contact us →</a>
+        <a href="about.html" class="btn-ghost">Our mission</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2025 Books &amp; Bites. 501(c)(3) Nonprofit organization.</span>
+    <span>Book by book &amp; bite by bite 🤍</span>
+  </footer>
+
+</body>
+</html>
