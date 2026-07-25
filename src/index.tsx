@@ -1,11 +1,11 @@
 /* @refresh reload */
 import { render } from "solid-js/web";
 import "./index.css";
-import App from "./App.tsx";
 import { HashRouter, Route } from "@solidjs/router";
 import Navbar from "./components/Navbar.tsx";
 import Footer from "./components/Footer.tsx";
 
+import Home from "./views/Home.tsx";
 import AboutPage from "./views/AboutPage.tsx";
 import BitesPage from "./views/BitesPage.tsx";
 import BooksPage from "./views/BooksPage.tsx";
@@ -43,7 +43,7 @@ render(
   () => (
     <HashRouter>
       <Route component={RootLayout}>
-        <Route path="/" component={() => <App />} />
+        <Route path="/" component={() => <Home />} />
         <Route path="/about" component={() => <AboutPage />} />
         <Route path="/bites" component={() => <BitesPage />} />
         <Route path="/books" component={() => <BooksPage />} />

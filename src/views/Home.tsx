@@ -1,5 +1,5 @@
 import { A } from "@solidjs/router";
-import np_logo from "./assets/np_logo.png";
+import np_logo from "../assets/np_logo.png";
 
 function App() {
   return (
