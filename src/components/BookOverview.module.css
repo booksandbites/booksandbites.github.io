@@ -1,0 +1,8 @@
+.container {
+  max-height: 256px;
+}
+
+.img {
+  height: 100%;
+  object-fit: contain;
+}

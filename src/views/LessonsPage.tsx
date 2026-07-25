@@ -1,5 +1,5 @@
 const LessonPage = () => {
-  return <h1>Lesson Page</h1>;
+  return <h1>idk what you expected</h1>;
 };
 
 export default LessonPage;

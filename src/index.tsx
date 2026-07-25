@@ -1,4 +1,3 @@
-/* @refresh reload */
 import { render } from "solid-js/web";
 import "./index.css";
 import { HashRouter, Route } from "@solidjs/router";
@@ -16,19 +15,17 @@ const root = document.getElementById("root");
 
 const RootLayout = (props: { children?: any }) => (
   <>
-    {/* not exactly sure why this was in the clanker's html, but maybe its good for compat? */}
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
-    <div style="display: flex; flex-direction: column; height: 100vh;">
+    <div style="display: flex; flex-direction: column; min-height: 100vh;">
       <Navbar />
       <div
         style="
         display: flex;
         flex-direction: column;
         flex: 1;
-        overflow-y: auto;
         padding: 20px;
         box-sizing: border-box;"
       >

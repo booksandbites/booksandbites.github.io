@@ -1,0 +1,9 @@
+.footer {
+  padding: 0.5rem;
+  border-top: 1px solid var(--emerald);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--emerald);
+}
