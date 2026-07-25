@@ -1,8 +1,56 @@
 /* @refresh reload */
-import { render } from 'solid-js/web'
-import './index.css'
-import App from './App.tsx'
+import { render } from "solid-js/web";
+import "./index.css";
+import App from "./App.tsx";
+import { HashRouter, Route } from "@solidjs/router";
+import Navbar from "./components/Navbar.tsx";
+import Footer from "./components/Footer.tsx";
 
-const root = document.getElementById('root')
+import AboutPage from "./views/AboutPage.tsx";
+import BitesPage from "./views/BitesPage.tsx";
+import BooksPage from "./views/BooksPage.tsx";
+import LessonPage from "./views/LessonsPage.tsx";
+import SecretPage from "./views/SecretPage.tsx";
 
-render(() => <App />, root!)
+const root = document.getElementById("root");
+
+const RootLayout = (props: { children?: any }) => (
+  <>
+    {/* not exactly sure why this was in the clanker's html, but maybe its good for compat? */}
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <div style="display: flex; flex-direction: column; height: 100vh;">
+      <Navbar />
+      <div
+        style="
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px;
+        box-sizing: border-box;"
+      >
+        {props.children}
+      </div>
+      <Footer />
+    </div>
+  </>
+);
+
+render(
+  () => (
+    <HashRouter>
+      <Route component={RootLayout}>
+        <Route path="/" component={() => <App />} />
+        <Route path="/about" component={() => <AboutPage />} />
+        <Route path="/bites" component={() => <BitesPage />} />
+        <Route path="/books" component={() => <BooksPage />} />
+        <Route path="/lessons" component={() => <LessonPage />} />
+        <Route path="/secret" component={() => <SecretPage />} />
+      </Route>
+    </HashRouter>
+  ),
+  root!,
+);

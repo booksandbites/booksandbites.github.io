@@ -1,46 +1,33 @@
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-// import "./App.css";
+import { A } from "@solidjs/router";
+import np_logo from "./assets/np_logo.png";
 
 function App() {
   return (
-    <div style="display: flex; flex-direction: column; height: 100vh;">
-      <Navbar />
-      <div
-        style="
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          overflow-y: auto;
-          padding: 20px;
-          box-sizing: border-box;"
-      >
-        <section class="hero">
-          <div>
-            <span class="hero-tag">Nonprofit · Literacy Education</span>
-            <h1>
-              Teaching literacy <em>bite</em> by <em>bite</em>.
-            </h1>
-            <p class="hero-sub">
-              We believe reading is a right, not a privilege. Our free lessons
-              help learners at every stage build confidence and skill.
-            </p>
-            <a href="lessons.html" class="btn">
-              Browse Lessons
-            </a>
-            <a href="about.html" class="btn btn-outline">
-              Our Mission
-            </a>
-          </div>
-          <div class="logo-card">
-            <img src="np_logo.png" alt="Books & Bites seal" />
-            <span class="logo-name">Books &amp; Bites</span>
-            <span class="logo-tagline">Book by book · Bite by bite</span>
-          </div>
-        </section>
-      </div>
-      <Footer />
-    </div>
+    <>
+      <section class="hero">
+        <div>
+          <h1>
+            Teaching literacy <em>bite</em> by <em>bite</em>.
+          </h1>
+          <p class="hero-sub">
+            Lorem ipsum dolor sit amet consectetur adipiscing elit. Sit amet
+            consectetur adipiscing elit quisque faucibus ex. Adipiscing elit
+            quisque faucibus ex sapien vitae pellentesque.
+          </p>
+          <A href="/lessons" class="btn">
+            Browse Lessons
+          </A>
+          <A href="/about" class="btn btn-outline">
+            Our Mission
+          </A>
+        </div>
+        <div class="logo-card">
+          <img src={np_logo} alt="Books & Bites seal" />
+          <span class="logo-name">Books &amp; Bites</span>
+          <span class="logo-tagline">Book by book · Bite by bite</span>
+        </div>
+      </section>
+    </>
   );
 }
 
