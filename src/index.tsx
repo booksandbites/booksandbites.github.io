@@ -19,19 +19,29 @@ const RootLayout = (props: { children?: any }) => (
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
-    <div style="display: flex; flex-direction: column; min-height: 100vh;">
+    <div style="display: flex; flex-direction: column; height: 100vh;">
       <Navbar />
       <div
         style="
         display: flex;
         flex-direction: column;
         flex: 1;
-        padding: 20px;
-        box-sizing: border-box;"
+        overflow-y: auto;
+        box-sizing: border-box;
+        padding-top: calc(var(--navbar-height) + 1rem);
+        "
       >
-        {props.children}
+        <div
+          style="
+            flex: 1;
+            padding-left: 20px;
+            padding-right: 20px;
+          "
+        >
+          {props.children}
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   </>
 );

@@ -7,12 +7,12 @@
 }
 :root {
   --beige: #faf7f2;
-  --beige1: #f5f5dd;
+  /*--beige1: #f5f5dd;
   --beige2: #ece7ca;
   --beige3: #e3d8b7;
   --beige4: #dacaa4;
   --beige5: #d1bb91;
-  --beige6: #c8ad7e;
+  --beige6: #c8ad7e;*/
 
   --ink: #1a1a18;
   --lavender: #87677b;
@@ -29,6 +29,8 @@
   --orange: #e67e22;
   --normal-font: "DM Sans", sans-serif;
   --fancy-font: "Playfair Display", serif;
+
+  --navbar-height: 4rem;
 }
 
 html {
@@ -46,4 +48,6 @@ body {
   background: var(--beige);
   color: var(--ink);
   line-height: 1.7;
+  overflow: hidden;
+  height: 100vh;
 }

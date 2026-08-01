@@ -1,7 +1,6 @@
 import { A } from "@solidjs/router";
 import styles from "./Home.module.css";
 import np_logo from "../assets/np_logo.png";
-import LAndGCover from "../assets/covers/Love and Gelato Cover.jpg";
 import BookOverview from "../components/BookOverview";
 
 function App() {
