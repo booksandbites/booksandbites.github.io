@@ -34,8 +34,9 @@ const RootLayout = (props: { children?: any }) => (
         <div
           style="
             flex: 1;
-            padding-left: 20px;
-            padding-right: 20px;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-bottom: 1rem;
           "
         >
           {props.children}

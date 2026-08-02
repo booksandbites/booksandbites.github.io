@@ -16,6 +16,7 @@
 # Bites page
 - past sponsors
 - past shelters we have donated to
+  - luca's italian cuisine, bogota
 
 # Lessons page
 - lessons general info

@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf docs"
   },
   "dependencies": {
     "@solid-primitives/media": "^2.3.6",
