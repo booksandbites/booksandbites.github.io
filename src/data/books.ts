@@ -14,6 +14,7 @@ export const books: Book[] = [
     quote:
       "People come to Italy for love and gelato, but sometimes they discover much more.",
     status: "previous",
+    theme: "The Relationships that Shape Us",
   },
   {
     title: "Pachinko",
@@ -22,6 +23,7 @@ export const books: Book[] = [
     description: ["description, etc", "another paragraph, etc"],
     quote: null,
     status: "current",
+    theme: "The Relationships that Shape Us",
   },
 ];
 

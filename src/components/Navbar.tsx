@@ -37,21 +37,6 @@ const Navbar = () => {
             Books
           </A>
         </li>
-        <li>
-          <A href="/bites" activeClass={styles["active-link"]}>
-            Bites
-          </A>
-        </li>
-        <li>
-          <A href="/about" activeClass={styles["active-link"]}>
-            Mission
-          </A>
-        </li>
-        <li>
-          <A href="/lessons" activeClass={styles["active-link"]}>
-            Lessons
-          </A>
-        </li>
       </ul>
     </nav>
   );

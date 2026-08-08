@@ -4,7 +4,8 @@ export interface Book {
   coverImage: string;
   description: string[];
   quote: string | null;
-  status: "previous" | "current" | "next";
+  status: "long ago" | "previous" | "current" | "next" | "later";
+  theme: "The Relationships that Shape Us"
 }
 
 export interface BookData {

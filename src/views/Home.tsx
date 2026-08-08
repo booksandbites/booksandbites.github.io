@@ -33,7 +33,10 @@ function App() {
           Our Mission
         </A>
       </div>
+      <div>
+        <h1 class={styles["title-text"]}>Current theme: </h1>
       <BookOverview book={books[bookData.current]} />
+      </div>
     </>
   );
 }

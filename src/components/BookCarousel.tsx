@@ -2,7 +2,6 @@ import { createSignal, For } from "solid-js";
 import BookOverview from "./BookOverview";
 import type { Book } from "../types";
 import styles from "./BookCarousel.module.css";
-import btnStyles from "../views/Home.module.css";
 import { bookData } from "../data/books";
 
 interface BookCarouselProps {
@@ -28,10 +27,10 @@ const BookCarousel = (props: BookCarouselProps) => {
         <div class={styles["controls"]}>
           <button
             onClick={prevBook}
-            class={btnStyles["btn"]}
+            class={styles["btn"]}
             aria-label="Previous book"
           >
-            ← Previous
+            ←
           </button>
 
           <div class={styles["indicators"]}>
@@ -49,10 +48,10 @@ const BookCarousel = (props: BookCarouselProps) => {
 
           <button
             onClick={nextBook}
-            class={btnStyles["btn"]}
+            class={styles["btn"]}
             aria-label="Next book"
           >
-            Next →
+            →
           </button>
         </div>
       )}
