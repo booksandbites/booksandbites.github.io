@@ -17,3 +17,26 @@
   padding-bottom: 1rem;
   text-align: center;
 }
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gallery {
+  column-count: 2;
+  column-gap: 16px;
+}
+.gallery img {
+  /* Makes the image fill the column width */
+  width: 100%;
+  /* Prevents stretching or squishing */
+  height: auto;
+  /* Removes weird default image spacing */
+  display: block;
+  /* Space below each image */
+  margin-bottom: 16px;
+  /* Prevents the browser from chopping an image in half across columns */
+  break-inside: avoid;
+}

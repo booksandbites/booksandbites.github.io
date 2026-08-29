@@ -37,6 +37,11 @@ const Navbar = () => {
             Books
           </A>
         </li>
+        <li>
+          <A href="/bites" activeClass={styles["active-link"]}>
+            Bites
+          </A>
+        </li>
       </ul>
     </nav>
   );
