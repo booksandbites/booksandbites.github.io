@@ -25,14 +25,15 @@ function App() {
         to donate to shelters in our area, which are usually based on the book
         we are reading (ex: Book set it Italy &rarr; Italian food).
       </p>
-      <div class={styles["btn-container"]} style={{}}>
+      {/*<div class={styles["btn-container"]} style={{}}>
         <A href="/lessons" class={styles["btn"]}>
           Browse Lessons
         </A>
         <A href="/about" class={styles["btn"]}>
           Our Mission
         </A>
-      </div>
+      </div>*/}
+      <br/>
       <div>
         <h1 class={styles["title-text"]}>Current theme: {books[bookData.current].theme}</h1>
       <BookOverview book={books[bookData.current]} />
