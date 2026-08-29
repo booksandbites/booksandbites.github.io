@@ -1,4 +1,4 @@
-import { A } from "@solidjs/router";
+// import { A } from "@solidjs/router";
 import styles from "./Home.module.css";
 import np_logo from "../assets/np_logo.png";
 import { bookData, books } from "../data/books";
