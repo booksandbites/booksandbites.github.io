@@ -12,8 +12,8 @@ export const books: Book[] = [
       "When Lina is given a journal that her mom kept when she lived in Italy, she suddenly uncovers a magical world of secret romances, art, and hidden bakeries. A world that inspires Lina, along with the ever-so-charming Ren, to follow in her mother's footsteps and unearth a secret that has been kept for far too long.",
     ],
     quote:
-      "People come to Italy for love and gelato, but sometimes they discover much more.",
-      // null,
+      "You know, people come to Italy for all sorts of reasons, but when they stay, it's for the same two things: Love and gelato.",
+    // null,
     status: "Last finished book",
     theme: "The Relationships that Shape Us",
   },
