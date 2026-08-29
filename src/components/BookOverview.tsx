@@ -23,28 +23,30 @@ const BookOverview = (props: BookOverviewProps) => {
             </blockquote>
           </Show>
         </div>
-        <div class={styles["content"]}>
-          <div class={styles["header-info"]}>
-            <h3 class={styles["book-title"]}>{props.book.title}</h3>
-            <p class={styles["author"]}>by {props.book.author}</p>
-            <div class={styles["divider"]}></div>
-          </div>
+        <div class={styles["content-wrapper"]}>
+          <div class={styles["content"]}>
+            <div class={styles["header-info"]}>
+              <h3 class={styles["book-title"]}>{props.book.title}</h3>
+              <p class={styles["author"]}>by {props.book.author}</p>
+              <div class={styles["divider"]}></div>
+            </div>
 
-          <div class={styles["description-container"]}>
-            <Show
-              when={props.book.description}
-              fallback={
-                <p class={styles["description"]}>under construction!</p>
-              }
-            >
-              {(desc) => (
-                <For each={desc()}>
-                  {(paragraph) => (
-                    <p class={styles["description"]}>{paragraph}</p>
-                  )}
-                </For>
-              )}
-            </Show>
+            <div class={styles["description-container"]}>
+              <Show
+                when={props.book.description}
+                fallback={
+                  <p class={styles["description"]}>under construction!</p>
+                }
+              >
+                {(desc) => (
+                  <For each={desc()}>
+                    {(paragraph) => (
+                      <p class={styles["description"]}>{paragraph}</p>
+                    )}
+                  </For>
+                )}
+              </Show>
+            </div>
           </div>
         </div>
       </div>
