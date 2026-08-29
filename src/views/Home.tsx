@@ -34,7 +34,7 @@ function App() {
         </A>
       </div>
       <div>
-        <h1 class={styles["title-text"]}>Current theme: </h1>
+        <h1 class={styles["title-text"]}>Current theme: {books[bookData.current].theme}</h1>
       <BookOverview book={books[bookData.current]} />
       </div>
     </>

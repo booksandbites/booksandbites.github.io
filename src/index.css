@@ -43,6 +43,27 @@ html {
   }
 }
 
+.inner {
+  flex: 1;
+  padding-left: clamp(1rem, 12vw, 10rem);
+  padding-right: clamp(1rem, 12vw, 10rem);
+  padding-bottom: 1rem;
+}
+
+/*.inner {
+  flex: 1;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  padding-bottom: 1rem;
+}*/
+
+/*@media screen and (max-width: 1280px) {
+  .inner {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}*/
+
 body {
   font-family: var(--normal-font);
   background: var(--beige);

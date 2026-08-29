@@ -26,7 +26,9 @@
 .image-wrapper {
   flex-shrink: 0;
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  max-width: 300px; /* Matches the width of .img */
 }
 
 .img {
@@ -34,7 +36,6 @@
   height: auto;
   object-fit: cover;
   border-radius: 0.5rem;
-  /*box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);*/
 }
 
 .content {
@@ -42,6 +43,23 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  min-width: 0; /* Prevents flex children from overflowing horizontally */
+}
+
+.description-container {
+  max-height: 250px; /* Adjust this value to set the desired scroll height */
+  overflow-y: auto;
+  padding-right: 0.5rem; /* Space for the scrollbar */
+}
+
+/* Optional: Custom scrollbar styling */
+.description-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.description-container::-webkit-scrollbar-thumb {
+  background-color: var(--pink);
+  border-radius: 3px;
 }
 
 .book-title {

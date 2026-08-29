@@ -31,12 +31,9 @@ const RootLayout = (props: { children?: any }) => (
         padding-top: calc(var(--navbar-height) + 1rem);
         "
       >
-        <div
+        <div class="inner"
           style="
             flex: 1;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            padding-bottom: 1rem;
           "
         >
           {props.children}

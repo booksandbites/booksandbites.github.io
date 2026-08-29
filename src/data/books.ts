@@ -13,20 +13,21 @@ export const books: Book[] = [
     ],
     quote:
       "People come to Italy for love and gelato, but sometimes they discover much more.",
-    status: "previous",
+      // null,
+    status: "Last finished book",
     theme: "The Relationships that Shape Us",
   },
   {
     title: "Pachinko",
     author: "Min Jin Lee",
     coverImage: PachinkoCover,
-    description: ["description, etc", "another paragraph, etc"],
+    description: null,
     quote: null,
-    status: "current",
+    status: "Current book",
     theme: "The Relationships that Shape Us",
   },
 ];
 
 export const bookData: BookData = {
-  current: 1,
+  current: 0,
 };

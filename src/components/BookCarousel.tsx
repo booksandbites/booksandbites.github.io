@@ -12,11 +12,11 @@ const BookCarousel = (props: BookCarouselProps) => {
   const [currentIndex, setCurrentIndex] = createSignal(bookData.current);
 
   const nextBook = () => {
-    setCurrentIndex((prev) => (prev + 1) % props.books.length);
+    setCurrentIndex((prev) => Math.min(prev + 1, props.books.length - 1));
   };
 
   const prevBook = () => {
-    setCurrentIndex((prev) => (prev - 1 + props.books.length) % props.books.length);
+    setCurrentIndex((prev) => Math.max(prev - 1, 0));
   };
 
   return (
@@ -37,8 +37,10 @@ const BookCarousel = (props: BookCarouselProps) => {
             <For each={props.books}>
               {(_, index) => (
                 <button
-                  class={styles["indicator"]}
-                  classList={{ [styles["active"]]: index() === currentIndex() }}
+                  classList={{
+                    [styles["indicator"]]: true,
+                    [styles["active"]]: index() === currentIndex(),
+                  }}
                   onClick={() => setCurrentIndex(index())}
                   aria-label={`Go to book ${index() + 1}`}
                 />
